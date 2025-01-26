@@ -1,0 +1,8 @@
+@keyframes mover {
+    0%, 100% {
+        transform: translateY(0); /* Posición original */
+    }
+    50% {
+        transform: translateY(-10px); /* Se mueve hacia arriba 10px */
+    }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dual Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.sync/L.Map.Sync.js"></script>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #header {
+      padding: 10px 0; /* Solo padding vertical */
+      text-align: center;
+      z-index: 1000;
+    }
+    #descarga {
+      background-color: #4CAF50; /* Color de fondo */
+      color: white; /* Color de texto */
+      padding: 10px 20px; /* Espaciado interno */
+      text-decoration: none; /* Quitar subrayado */
+      border-radius: 8px; /* Bordes redondeados */
+      font-size: 16px; /* Tamaño de fuente */
+      font-weight: bold; /* Negrita */
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+      transition: background-color 0.3s ease, transform 0.2s ease; /* Animación */
+    }
+    #descarga:hover {
+      background-color: #45a049; /* Color al pasar el mouse */
+      transform: scale(1.05); /* Agranda ligeramente al pasar el mouse */
+    }
+
+    #mapas{
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .map-container {
+      flex: 1;
+      border: 1px solid #ccc;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Contenedor para el encabezado -->
+<div id="header">
+  <a id="descarga" href="pdf/8_Folium_alumnos.pdf" download>Descargar PDF</a>
+</div>
+
+<div id="mapas">
+    <!-- Contenedor del primer mapa -->
+  <div class="map-container">
+    <iframe id="mapa1" src="doc/Accidentes_Madrid.html"></iframe>
+  </div>
+
+  <!-- Contenedor del segundo mapa -->
+  <div class="map-container">
+    <iframe id="mapa2" src="doc/Contenedores.html"></iframe>
+  </div>
+</div>
+
+
+<script>
+  // Sincronización de mapas usando Leaflet.Sync
+  const iframe1 = document.getElementById('mapa1').contentWindow;
+  const iframe2 = document.getElementById('mapa2').contentWindow;
+
+  iframe1.onload = () => {
+    iframe2.onload = () => {
+      const map1 = iframe1.L.map;
+      const map2 = iframe2.L.map;
+
+      // Sincronizar ambos mapas
+      map1.sync(map2);
+      map2.sync(map1);
+    };
+  };
+</script>
+</body>
+</html>

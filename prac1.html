@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica 1</title>
+
+   <style>
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      
+    }
+
+    #header {
+      padding: 10px 0; /* Solo padding vertical */
+      text-align: center;
+      z-index: 1000;
+    }
+    #descarga {
+      background-color: #4CAF50; /* Color de fondo */
+      color: white; /* Color de texto */
+      padding: 10px 20px; /* Espaciado interno */
+      text-decoration: none; /* Quitar subrayado */
+      border-radius: 8px; /* Bordes redondeados */
+      font-size: 16px; /* Tamaño de fuente */
+      font-weight: bold; /* Negrita */
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+      transition: background-color 0.3s ease, transform 0.2s ease; /* Animación */
+    }
+    #descarga:hover {
+      background-color: #45a049; /* Color al pasar el mouse */
+      transform: scale(1.05); /* Agranda ligeramente al pasar el mouse */
+    }
+
+    
+   </style> 
+</head>
+<body>
+  <!-- Contenedor para el encabezado -->
+  <div id="header">
+    <a id="descarga" href="pdf/1_INTRODUCCION%20QGIS.pdf" download>Descargar PDF</a>
+  </div>
+
+<!-- Imagen desde la carpeta doc -->
+<img src="doc/Mapa_Zonas.png" alt="Descripción de la imagen" style="max-width: 100%; height: auto;">
+
+<br><br>
+
+
+</body>
+</html>

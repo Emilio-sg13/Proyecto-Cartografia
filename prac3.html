@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Practica 3</title>
+
+  <style>
+    body {
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centrar horizontalmente */
+      justify-content: center; /* Centrar verticalmente */
+      height: 100vh; /* Ocupa toda la altura de la ventana */
+    }
+
+    #header {
+      text-align: center;
+      margin-bottom: 10px; /* Separación del visor */
+    }
+
+    #descarga {
+      background-color: #4CAF50; /* Color de fondo */
+      color: white; /* Color de texto */
+      padding: 15px 30px; /* Tamaño más grande */
+      text-decoration: none; /* Quitar subrayado */
+      border-radius: 12px; /* Bordes redondeados */
+      font-size: 18px; /* Fuente más grande */
+      font-weight: bold; /* Negrita */
+      box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+      transition: background-color 0.3s ease, transform 0.2s ease; /* Animación */
+    }
+
+    #descarga:hover {
+      background-color: #45a049; /* Color al pasar el mouse */
+      transform: scale(1.1); /* Agranda ligeramente al pasar el mouse */
+    }
+
+    .viewer {
+      width: 90%; /* Ancho del visor */
+      height: 90%; /* Altura del visor */
+      border: 2px solid #ccc; /* Borde alrededor del PDF */
+      border-radius: 10px; /* Bordes redondeados */
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); /* Sombra del visor */
+      overflow: hidden; /* Evita desbordamiento */
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Contenedor para el encabezado -->
+  <div id="header">
+    <a id="descarga" href="pdf/3_TEMATICO_RASTER.pdf" download>Descargar PDF</a>
+  </div>
+
+  <div class="viewer">
+    <!-- Mostrar PDF en un iframe -->
+    <iframe src="doc/3_Respuesta.pdf"></iframe>
+  </div>
+</body>
+</html>

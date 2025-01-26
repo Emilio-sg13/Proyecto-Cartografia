@@ -1,0 +1,61 @@
+.navbar{
+    background: none;
+    z-index: 5;
+}
+#Bienvenida{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    height: 92.5vh;
+    width: 100%;
+    margin: 0 auto;
+    background-image: url("../img/photo-1488646953014-85cb44e25828.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#Bienvenida p, #Bienvenida h1{
+    z-index: 1;
+    margin-inline: 10vw;
+    text-align: center;
+}
+#Bienvenida .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 0; /* Superpone el degradado sobre el video */
+    box-shadow: inset 0 0 1px 0 black; /* Crea un borde interior de 1px en la parte superior */
+}
+.abajo {
+    align-self: center; /* Centra el botón horizontalmente */
+    margin-bottom: 10px; /* Añade un margen inferior */
+    justify-self: baseline;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    animation: mover 2s infinite; /* Añadimos la animación */
+    z-index: 3;
+    color: var(--color-primario);
+}
+.tab-content>div{
+    height: 100%;
+    width: 100%;
+}
+
+#map{
+    height: 100%;
+    width: 100%;
+}
+#librillo{
+    height: 100vh;
+    width: 100%;
+    margin: 0 auto
+}
+#librillo .tab-content{
+    height: 92.5vh;
+}

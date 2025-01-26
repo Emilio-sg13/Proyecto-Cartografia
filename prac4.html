@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa con GeoJSON Estilizado</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<style>
+  body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  #header {
+    padding: 10px 0; /* Solo padding vertical */
+    text-align: center;
+    z-index: 1000;
+  }
+  #descarga {
+    background-color: #4CAF50; /* Color de fondo */
+    color: white; /* Color de texto */
+    padding: 10px 20px; /* Espaciado interno */
+    text-decoration: none; /* Quitar subrayado */
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Animación */
+  }
+  #descarga:hover {
+    background-color: #45a049; /* Color al pasar el mouse */
+    transform: scale(1.05); /* Agranda ligeramente al pasar el mouse */
+  }
+  #map {
+    flex-grow: 1; /* Ocupa todo el espacio restante */
+    height: 100%; /* Asegura que el mapa se ajuste correctamente */
+    width: 100%;
+  }
+</style>
+
+</head>
+<body>
+  <!-- Contenedor para el encabezado -->
+  <div id="header">
+    <a id="descarga" href="pdf/4_ANALISIS_TERRITORIO.pdf" download>Descargar PDF</a>
+  </div>
+
+  <!-- Contenedor del mapa -->
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Inicializar el mapa
+    var map = L.map('map').setView([41.65413286031124, -4.736546973863467], 8);
+
+    // Capa base de OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19
+    }).addTo(map);
+
+    // Función de estilo para los elementos GeoJSON
+    function estilo(feature) {
+      return {
+        fillColor: "#b000b6", // Color de relleno (puedes cambiarlo)
+        weight: 2, // Grosor de la línea de borde
+        opacity: 1, // Opacidad de la línea de borde
+        color: "#ffffff", // Color de la línea de borde
+        dashArray: "3", // Estilo de línea (opcional, para líneas discontinuas)
+        fillOpacity: 0.4 // Opacidad del relleno
+      };
+    }
+
+    // Cargar el archivo GeoJSON desde la ruta
+    fetch('doc/Zonas_validas.geojson') // Cambia la ruta a tu archivo GeoJSON
+      .then(response => response.json())
+      .then(data => {
+        console.log(data); // Verifica en la consola si el GeoJSON se carga correctamente
+
+        // Verificar que el GeoJSON contenga datos
+        if (data && data.features && data.features.length > 0) {
+          // Agregar GeoJSON al mapa con estilo personalizado
+          L.geoJSON(data, {
+            style: estilo, // Aplicar el estilo
+            onEachFeature: function (feature, layer) {
+              // Si tienes propiedades en el GeoJSON, muestra en el popup
+              if (feature.properties && feature.properties.name) {
+                layer.bindPopup(feature.properties.name); // Agrega un popup con el nombre
+              }
+            }
+          }).addTo(map); // Agregar el GeoJSON al mapa
+        } else {
+          console.error('El archivo GeoJSON no contiene características');
+        }
+      })
+      .catch(error => {
+        console.error('Error al cargar el archivo GeoJSON:', error);
+      });
+  </script>
+</body>
+</html>

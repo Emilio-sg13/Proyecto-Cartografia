@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Practica 7</title>
+
+    <style>
+      body {
+          background-size: cover;
+          margin: 0;
+          padding: 0;
+      }
+
+      #header {
+      padding: 10px 0; /* Solo padding vertical */
+      text-align: center;
+      z-index: 1000;
+    }
+    #descarga {
+      background-color: #4CAF50; /* Color de fondo */
+      color: white; /* Color de texto */
+      padding: 10px 20px; /* Espaciado interno */
+      text-decoration: none; /* Quitar subrayado */
+      border-radius: 8px; /* Bordes redondeados */
+      font-size: 16px; /* Tamaño de fuente */
+      font-weight: bold; /* Negrita */
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+      transition: background-color 0.3s ease, transform 0.2s ease; /* Animación */
+    }
+    #descarga:hover {
+      background-color: #45a049; /* Color al pasar el mouse */
+      transform: scale(1.05); /* Agranda ligeramente al pasar el mouse */
+    }
+
+      .viewer {
+          position: relative;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+          gap: 20px;
+      }
+
+      .viewer h1 {
+          margin-top: -15px;
+          margin-bottom: 20px;
+          font-size: 2rem;
+          color: whitesmoke;
+      }
+
+      .viewer .row {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          gap: 20px;
+          width: 100%;
+      }
+
+      .viewer img {
+          max-width: 40%;
+          height: auto;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .viewer iframe {
+          width: 60%;
+          height: 63vh;
+          border: none;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          background-color: whitesmoke;
+      }
+  </style>
+</head>
+<body>
+        <!-- Contenedor para el encabezado -->
+        <div id="header">
+            <a id="descarga" href="pdf/7_Practica_Alumnos_GNSS.pdf" download>Descargar PDF</a>
+        </div>
+        <div class="viewer">
+          <div class="row">
+              <img src="doc/Grafica-prac7.jpg" alt="Grafico de la practica 7">
+
+              <iframe src="doc/tabla-prac7.html" allowfullscreen></iframe>
+          </div>
+      </div>
+
+</body>
+</html>
